@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京都租屋完整指南 — 語言學校留學生版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1814;
+  --ink2: #4a463f;
+  --ink3: #8a857c;
+  --paper: #f7f4ef;
+  --paper2: #edeae3;
+  --paper3: #e2ddd5;
+  --accent: #c0392b;
+  --accent2: #e8623a;
+  --teal: #1a6b5a;
+  --teal-lt: #e4f0ec;
+  --gold: #b8860b;
+  --gold-lt: #fdf6e3;
+  --border: rgba(26,24,20,0.12);
+  --border2: rgba(26,24,20,0.06);
+  --radius: 6px;
+  --radius-lg: 12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans TC',sans-serif;
+  font-weight:400;
+  font-size:14px;
+  line-height:1.7;
+  min-height:100vh;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,244,239,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:0.5px solid var(--border);
+  padding:0 24px;
+  display:flex;align-items:center;gap:0;
+  height:52px;
+  overflow-x:auto;
+}
+nav::-webkit-scrollbar{display:none}
+.nav-logo{
+  font-family:'Noto Serif TC',serif;
+  font-size:13px;font-weight:600;
+  color:var(--accent);
+  white-space:nowrap;
+  margin-right:24px;
+  flex-shrink:0;
+}
+.nav-links{display:flex;gap:0;flex-shrink:0}
+.nav-links a{
+  font-size:12px;color:var(--ink3);
+  text-decoration:none;
+  padding:0 12px;height:52px;
+  display:flex;align-items:center;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;
+  transition:color .2s,border-color .2s;
+}
+.nav-links a:hover{color:var(--ink);border-color:var(--accent)}
+
+/* ── HERO ── */
+.hero{
+  background:var(--ink);
+  color:var(--paper);
+  padding:72px 24px 64px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    45deg,
+    transparent,transparent 40px,
+    rgba(255,255,255,0.015) 40px,rgba(255,255,255,0.015) 41px
+  );
+}
+.hero-inner{max-width:800px;margin:0 auto;position:relative}
+.hero-tag{
+  display:inline-block;
+  font-size:11px;font-family:'DM Mono',monospace;
+  color:var(--accent2);letter-spacing:.12em;
+  border:0.5px solid var(--accent2);
+  padding:3px 10px;border-radius:3px;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(26px,5vw,44px);
+  font-weight:600;line-height:1.25;
+  margin-bottom:16px;
+}
+.hero h1 em{color:var(--accent2);font-style:normal}
+.hero p{color:rgba(247,244,239,0.65);font-size:14px;max-width:520px;line-height:1.8}
+.hero-meta{
+  display:flex;gap:24px;flex-wrap:wrap;
+  margin-top:32px;
+  padding-top:24px;
+  border-top:0.5px solid rgba(255,255,255,0.1);
+}
+.hero-meta-item{font-size:12px;color:rgba(247,244,239,0.5)}
+.hero-meta-item strong{display:block;font-size:13px;color:var(--paper);font-weight:500;margin-bottom:2px}
+
+/* ── LAYOUT ── */
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+.page-section{padding:56px 0}
+.page-section+.page-section{border-top:0.5px solid var(--border)}
+
+/* ── SECTION HEADER ── */
+.s-header{display:flex;align-items:baseline;gap:12px;margin-bottom:28px}
+.s-num{
+  font-family:'DM Mono',monospace;
+  font-size:11px;color:var(--accent);
+  border:0.5px solid var(--accent);
+  padding:2px 7px;border-radius:3px;
+  flex-shrink:0;
+}
+.s-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:20px;font-weight:600;
+  color:var(--ink);
+}
+.s-sub{font-size:12px;color:var(--ink3);margin-top:4px}
+
+/* ── CARDS ── */
+.card{
+  background:var(--paper2);
+  border:0.5px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+}
+.card-white{
+  background:#fff;
+  border:0.5px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;border-bottom:0.5px solid var(--border);margin-bottom:24px;overflow-x:auto}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{
+  font-size:12px;color:var(--ink3);
+  background:none;border:none;
+  padding:10px 16px;
+  border-bottom:2px solid transparent;
+  cursor:pointer;white-space:nowrap;
+  font-family:'Noto Sans TC',sans-serif;
+  transition:color .15s,border-color .15s;
+}
+.tab-btn.active{color:var(--ink);border-color:var(--accent)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{
+  background:var(--paper3);
+  color:var(--ink2);font-weight:500;font-size:11px;
+  padding:8px 12px;text-align:left;
+  border-bottom:0.5px solid var(--border);
+  letter-spacing:.04em;
+}
+td{
+  padding:10px 12px;
+  border-bottom:0.5px solid var(--border2);
+  vertical-align:top;line-height:1.6;
+  color:var(--ink2);
+}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(0,0,0,0.015)}
+
+/* ── BADGES ── */
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:3px;letter-spacing:.03em}
+.b-warn{background:#fff3cd;color:#856404}
+.b-ok{background:#d1e7dd;color:#0a5e38}
+.b-info{background:#cfe2ff;color:#0a3471}
+.b-danger{background:#f8d7da;color:#84202a}
+.b-neu{background:var(--paper3);color:var(--ink2)}
+
+/* ── CALCULATOR ── */
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:20px}
+.calc-group{background:var(--paper2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:18px}
+.calc-group-title{font-size:11px;font-weight:500;color:var(--ink3);letter-spacing:.08em;margin-bottom:14px;padding-bottom:8px;border-bottom:0.5px solid var(--border)}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.calc-row label{font-size:12px;color:var(--ink2);flex:1;min-width:100px}
+.calc-row input,.calc-row select{
+  font-size:13px;font-family:'Noto Sans TC',sans-serif;
+  background:#fff;border:0.5px solid var(--border);
+  border-radius:var(--radius);padding:5px 8px;
+  color:var(--ink);width:100px;
+  transition:border-color .15s;
+}
+.calc-row input:focus,.calc-row select:focus{outline:none;border-color:var(--accent)}
+.calc-row .unit{font-size:11px;color:var(--ink3);white-space:nowrap}
+.result-strip{
+  background:var(--ink);color:var(--paper);
+  border-radius:var(--radius-lg);padding:20px 24px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;
+  margin:16px 0;
+}
+.r-item .r-label{font-size:10px;color:rgba(247,244,239,0.5);letter-spacing:.06em;margin-bottom:3px}
+.r-item .r-val{font-family:'DM Mono',monospace;font-size:18px;color:var(--paper)}
+.r-item .r-sub{font-size:10px;color:rgba(247,244,239,0.4);margin-top:2px}
+
+/* ── ALERT BOXES ── */
+.alert{border-radius:var(--radius);padding:10px 14px;font-size:12px;line-height:1.6;margin:10px 0}
+.alert-warn{background:#fff8e1;border-left:3px solid #e6a800;color:#5d4200}
+.alert-ok{background:#e8f5e9;border-left:3px solid #2e7d32;color:#1b5e20}
+.alert-danger{background:#fce4e4;border-left:3px solid #c62828;color:#7f0000}
+.alert-info{background:#e3f2fd;border-left:3px solid #1565c0;color:#0d3c6e}
+.alert-neu{background:var(--paper2);border-left:3px solid var(--ink3);color:var(--ink2)}
+
+/* ── PROGRESS BARS ── */
+.prog-row{margin:8px 0}
+.prog-label{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin-bottom:3px}
+.prog-bg{background:var(--paper3);border-radius:3px;height:6px;overflow:hidden}
+.prog-fill{height:6px;border-radius:3px;transition:width .4s}
+
+/* ── MADORI GRID ── */
+.madori-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px}
+.madori-card{
+  background:#fff;border:0.5px solid var(--border);
+  border-radius:var(--radius-lg);padding:14px;
+}
+.madori-label{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--accent);margin-bottom:3px}
+.madori-name{font-size:11px;color:var(--ink2);font-weight:500;margin-bottom:4px}
+.madori-note{font-size:11px;color:var(--ink3);line-height:1.5}
+
+/* ── COMFORT CARDS ── */
+.comfort-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.comfort-card{background:var(--paper2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px}
+.comfort-type{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px}
+.comfort-m2{font-size:11px;color:var(--ink3);margin-bottom:8px}
+.comfort-bar-bg{background:var(--paper3);border-radius:3px;height:5px;margin-bottom:6px}
+.comfort-bar-fill{height:5px;border-radius:3px}
+.comfort-desc{font-size:11px;color:var(--ink2);line-height:1.5}
+
+/* ── AREA GRID ── */
+.area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.area-card{background:var(--paper2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px}
+.area-card .a-label{font-size:11px;color:var(--ink3);margin-bottom:4px}
+.area-card .a-val{font-family:'DM Mono',monospace;font-size:17px;color:var(--ink);font-weight:500}
+.area-card .a-sub{font-size:10px;color:var(--ink3);margin-top:2px}
+
+/* ── FLOOR PLAN VIZ ── */
+.fp-viz{
+  position:relative;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  background:var(--paper2);
+  height:180px;margin:16px 0;overflow:hidden;
+}
+.fp-room{
+  position:absolute;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:0.5px solid var(--border);
+  font-size:11px;color:var(--ink2);text-align:center;
+}
+.fp-room .fp-name{font-size:12px;font-weight:500;color:var(--ink)}
+.fp-room .fp-size{font-size:10px;color:var(--ink3)}
+
+/* ── REGION TABLE ── */
+.region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:16px 0}
+.region-card{background:#fff;border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:16px}
+.region-name{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.region-route{font-size:11px;color:var(--ink3);margin-bottom:8px}
+.region-stats{display:flex;gap:12px;flex-wrap:wrap}
+.region-stat{font-size:11px;color:var(--ink2)}
+.region-stat strong{display:block;font-size:13px;font-family:'DM Mono',monospace;color:var(--ink)}
+
+/* ── CHECKLIST ── */
+.check-section{margin-bottom:20px}
+.check-section-title{
+  font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--ink3);
+  padding:6px 0 6px 12px;
+  border-left:2px solid var(--accent);
+  margin-bottom:10px;
+}
+.check-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 10px;border-radius:var(--radius);
+  margin-bottom:4px;cursor:pointer;
+  transition:background .1s;
+}
+.check-item:hover{background:var(--paper2)}
+.check-item input[type=checkbox]{margin-top:2px;accent-color:var(--accent);flex-shrink:0}
+.check-item-content .c-title{font-size:13px;color:var(--ink)}
+.check-item-content .c-note{font-size:11px;color:var(--ink3);margin-top:1px;line-height:1.5}
+.check-progress-bar{background:var(--paper3);border-radius:4px;height:4px;margin:12px 0 20px;overflow:hidden}
+.check-progress-fill{height:4px;background:var(--teal);border-radius:4px;transition:width .3s}
+.check-counter{font-size:11px;color:var(--ink3);margin-bottom:8px}
+
+/* ── UTILITY TABLE ── */
+.util-highlight{background:var(--gold-lt);border:0.5px solid #d4a500;border-radius:var(--radius);padding:8px 12px;margin:8px 0;font-size:12px;color:#5d4200}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:rgba(247,244,239,0.4);
+  text-align:center;padding:32px 24px;font-size:11px;
+  border-top:0.5px solid rgba(255,255,255,0.06);
+}
+footer strong{color:rgba(247,244,239,0.7)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-section{animation:fadeUp .5s ease both}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .calc-grid{grid-template-columns:1fr}
+  .result-strip{grid-template-columns:1fr 1fr}
+  .hero{padding:48px 20px 40px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">京都租屋指南</div>
+  <div class="nav-links">
+    <a href="#areas">選區域</a>
+    <a href="#madori">間取り</a>
+    <a href="#room-calc">坪數計算</a>
+    <a href="#cost-calc">生活費</a>
+    <a href="#utility">水電瓦斯</a>
+    <a href="#checklist">看屋清單</a>
+    <a href="#initial-cost">初期費用</a>
+    <a href="#tips">注意事項</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">語言學校留學生專用 · 京都芸術大学</div>
+    <h1>京都<em>租屋</em>完整指南</h1>
+    <p>從選擇區域、看懂平面圖、計算坪數，到每月生活費試算與看屋確認清單——一站搞定所有租屋前的準備。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>學校位置</strong>左京區北白川瓜生山</div>
+      <div class="hero-meta-item"><strong>最近地鐵站</strong>北大路駅（烏丸線）</div>
+      <div class="hero-meta-item"><strong>推薦路線</strong>地鐵＋市バス / 叡山電車</div>
+      <div class="hero-meta-item"><strong>家賃相場</strong>4.0〜5.5 萬円/月</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ── SECTION 1: 區域 ── -->
+<section class="page-section" id="areas">
+  <div class="s-header">
+    <span class="s-num">01</span>
+    <div>
+      <div class="s-title">推薦租屋區域</div>
+      <div class="s-sub">以地鐵＋巴士為主的通勤策略</div>
+    </div>
+  </div>
+  <div class="alert alert-info" style="margin-bottom:20px">京都芸術大学無地鐵直通。最近地鐵為北大路駅，之後需轉乘市巴士204系統約15分鐘；或可搭叡山電車至茶山・京都芸術大学駅步行10分。以下推薦區域皆考量此路線規劃。</div>
+  <div class="region-grid">
+    <div class="region-card">
+      <div class="region-name">北大路駅周辺</div>
+      <div class="region-route">地鐵烏丸線 → 巴士204 約15分</div>
+      <div style="margin-bottom:8px"><span class="badge b-ok">地鐵可達</span> <span class="badge b-neu">生活機能佳</span></div>
+      <div class="region-stats">
+        <div class="region-stat"><strong>4.5萬円</strong>家賃相場</div>
+        <div class="region-stat"><strong>20〜25分</strong>通學時間</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--ink3);line-height:1.6">北大路バスターミナル是最大公車樞紐。周邊有萬代書店、イオン、各類便利商店，生活機能最完整，是偏好純地鐵通勤者的首選起點。</div>
+    </div>
+    <div class="region-card">
+      <div class="region-name">茶山・元田中周辺</div>
+      <div class="region-route">叡山電車 茶山駅 → 步行10分</div>
+      <div style="margin-bottom:8px"><span class="badge b-ok">離校最近</span> <span class="badge b-neu">安靜住宅街</span></div>
+      <div class="region-stats">
+        <div class="region-stat"><strong>4.6萬円</strong>家賃相場</div>
+        <div class="region-stat"><strong>10〜20分</strong>通學時間</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--ink3);line-height:1.6">離學校最近，步行或自行車皆可通學。白川通沿線有超市、藥妝，治安好，女性友善，是CP值最高的選擇。</div>
+    </div>
+    <div class="region-card">
+      <div class="region-name">出町柳周辺</div>
+      <div class="region-route">京阪 → 叡山電車 約25分</div>
+      <div style="margin-bottom:8px"><span class="badge b-info">學生街氛圍</span> <span class="badge b-neu">飲食豐富</span></div>
+      <div class="region-stats">
+        <div class="region-stat"><strong>4.8萬円</strong>家賃相場</div>
+        <div class="region-stat"><strong>25〜30分</strong>通學時間</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--ink3);line-height:1.6">京大學生街，飲食選擇多，鴨川就在旁邊，生活品質高。往大阪也方便。比起茶山稍貴，但娛樂與生活便利性更強。</div>
+    </div>
+    <div class="region-card">
+      <div class="region-name">北白川エリア</div>
+      <div class="region-route">市バス or 自転車 約10〜15分</div>
+      <div style="margin-bottom:8px"><span class="badge b-ok">家賃最低</span> <span class="badge b-neu">京都情緒濃</span></div>
+      <div class="region-stats">
+        <div class="region-stat"><strong>4.3萬円</strong>家賃相場</div>
+        <div class="region-stat"><strong>10〜15分</strong>通學時間</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--ink3);line-height:1.6">學校步行或自行車圈內，白川通沿線生活便利，一步之內是閑靜住宅街。家賃是周邊最實惠的區域。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 2: 間取り ── -->
+<section class="page-section" id="madori">
+  <div class="s-header">
+    <span class="s-num">02</span>
+    <div>
+      <div class="s-title">間取り（平面圖）縮寫一覽</div>
+      <div class="s-sub">看懂租屋網站上的房型代號</div>
+    </div>
+  </div>
+  <div class="madori-grid">
+    <div class="madori-card">
+      <div class="madori-label">R</div>
+      <div class="madori-name">Room（一間房）</div>
+      <div class="madori-note">無隔間，廚房直接在同一空間內，最小最便宜</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">1K</div>
+      <div class="madori-name">1房 ＋ Kitchen</div>
+      <div class="madori-note">廚房與臥室有門隔開，廚房約 4.5 帖以下，最常見的單身房型</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">1DK</div>
+      <div class="madori-name">1房 ＋ Dining Kitchen</div>
+      <div class="madori-note">廚房空間可放餐桌，約 4.5〜8 帖，生活感提升明顯</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">1LDK</div>
+      <div class="madori-name">1房 ＋ Living DK</div>
+      <div class="madori-note">有獨立客廳，舒適度高但租金也較高，適合長期居住</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">2K/2DK</div>
+      <div class="madori-name">2房型</div>
+      <div class="madori-note">兩間獨立臥室，適合分租或需要書房的人</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">S（納戸）</div>
+      <div class="madori-name">Service Room</div>
+      <div class="madori-note">無對外窗，法規不算居室，如 1LDK+S；可作收納或書房，但不宜長期睡覺</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">W.I.C</div>
+      <div class="madori-name">Walk-in Closet</div>
+      <div class="madori-note">步入式大型衣帽間，通常見於較高端物件</div>
+    </div>
+    <div class="madori-card">
+      <div class="madori-label">UB</div>
+      <div class="madori-name">Unit Bath</div>
+      <div class="madori-note">浴廁一體（3點ユニット），較老式，使用體驗較差</div>
+    </div>
+  </div>
+  <div class="alert alert-warn" style="margin-top:16px">納戸（S）因無採光窗，不符合建築基準法「居室」定義，冬冷夏熱、通風差，不建議長期當臥室使用。</div>
+
+  <div style="margin-top:28px">
+    <div class="s-sub" style="margin-bottom:14px;font-size:13px;color:var(--ink2)">其他常見縮寫 / 術語</div>
+    <table>
+      <thead><tr><th>縮寫</th><th>全稱</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td><code>築〇年</code></td><td>屋齡</td><td>「築10年」= 屋齡10年。1981年以前為舊耐震基準，不建議</td></tr>
+        <tr><td><code>木造</code></td><td>木造建築</td><td>隔音差，費用低，老式アパート常見</td></tr>
+        <tr><td><code>RC</code></td><td>鋼筋混凝土</td><td>隔音佳，較新，相對舒適</td></tr>
+        <tr><td><code>角部屋</code></td><td>角落房</td><td>大樓末端，兩面有窗，採光通風最好</td></tr>
+        <tr><td><code>南向</code></td><td>朝南</td><td>日照最長，冬暖夏涼；東向次之；北向最差</td></tr>
+        <tr><td><code>ペット可</code></td><td>可養寵物</td><td>未標示則預設不可</td></tr>
+        <tr><td><code>楽器相談</code></td><td>樂器可協商</td><td>大多物件禁止，有需要請確認</td></tr>
+        <tr><td><code>礼金なし</code></td><td>無礼金</td><td>可省初期費用，確認有無其他名目補收</td></tr>
+        <tr><td><code>即入居可</code></td><td>可立即入住</td><td>物件已空置，可快速完成手續</td></tr>
+        <tr><td><code>追焚き</code></td><td>浴缸二次加熱</td><td>可重新加熱已涼的浴缸水，是加分設備</td></tr>
+        <tr><td><code>宅配ボックス</code></td><td>包裹收件箱</td><td>不在家也可自動收包裹，網購族重要</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── SECTION 3: 坪數計算 ── -->
+<section class="page-section" id="room-calc">
+  <div class="s-header">
+    <span class="s-num">03</span>
+    <div>
+      <div class="s-title">坪數換算 ＆ 房間大小評估</div>
+      <div class="s-sub">輸入平面圖數字，自動計算實際可居住面積</div>
+    </div>
+  </div>
+
+  <div class="alert alert-info" style="margin-bottom:20px">
+    <strong>如何讀懂「洋9.3帖 ＋ 總面積25.5m²」</strong><br>
+    平面圖標示的帖數只是「有名稱的房間」面積，總面積扣掉這些後的差值就是廁所、浴室、走廊、牆壁等你住不到的部分。以25.5m²為例：洋9.3帖（京間）= 16.9m²，剩餘 25.5 − 16.9 = <strong>8.6m² 是非居住空間</strong>。
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showRoomTab('convert')">單位換算</button>
+    <button class="tab-btn" onclick="showRoomTab('plan')">平面圖試算</button>
+    <button class="tab-btn" onclick="showRoomTab('comfort')">房型舒適度</button>
+  </div>
+
+  <!-- 換算 -->
+  <div class="tab-panel active" id="rt-convert">
+    <div class="calc-grid" style="grid-template-columns:1fr">
+      <div class="calc-group">
+        <div class="calc-group-title">輸入面積</div>
+        <div class="calc-row">
+          <label>面積數值</label>
+          <input type="number" id="cv-val" value="25.5" step="0.5" oninput="calcConvert()">
+          <select id="cv-unit" onchange="calcConvert()">
+            <option value="m2">m²（平方公尺）</option>
+            <option value="jo">疊 / 帖</option>
+            <option value="tsubo">坪</option>
+          </select>
+        </div>
+        <div class="calc-row">
+          <label>疊數計算方式</label>
+          <select id="cv-jo" onchange="calcConvert()">
+            <option value="1.82">京間（關西 / 京都，1帖=1.82m²）</option>
+            <option value="1.653">江戸間（關東，1帖=1.653m²）</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="area-grid" id="cv-results">
+      <div class="area-card"><div class="a-label">m²（平方公尺）</div><div class="a-val" id="r-m2">25.5</div></div>
+      <div class="area-card"><div class="a-label">疊 / 帖（京間）</div><div class="a-val" id="r-jo">14.0</div></div>
+      <div class="area-card"><div class="a-label">坪</div><div class="a-val" id="r-tsubo">7.7</div></div>
+      <div class="area-card"><div class="a-label">整體感受</div><div class="a-val" id="r-feel" style="font-size:14px;font-family:'Noto Sans TC',sans-serif">標準套房</div></div>
+    </div>
+    <div class="alert alert-neu">關西（京都）通常使用「京間」，1帖≈1.82m²，比關東江戸間（1.653m²）大約大10%。同樣標示「6帖」的房間，在京都實際上更寬敞。</div>
+  </div>
+
+  <!-- 平面圖試算 -->
+  <div class="tab-panel" id="rt-plan">
+    <div class="calc-grid">
+      <div class="calc-group">
+        <div class="calc-group-title">物件基本資訊</div>
+        <div class="calc-row">
+          <label>總專有面積</label>
+          <input type="number" id="pl-total" value="25.5" step="0.5" oninput="calcPlan()">
+          <span class="unit">m²</span>
+        </div>
+        <div class="calc-row">
+          <label>疊數標準</label>
+          <select id="pl-jo" onchange="calcPlan()">
+            <option value="1.82">京間（京都，推薦）</option>
+            <option value="1.653">江戸間</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-group">
+        <div class="calc-group-title">從平面圖輸入各房間帖數</div>
+        <div class="calc-row">
+          <label>洋室 / 臥室</label>
+          <input type="number" id="pl-yo" value="9.3" step="0.1" oninput="calcPlan()">
+          <span class="unit">帖</span>
+        </div>
+        <div class="calc-row">
+          <label>廚房 K / DK</label>
+          <input type="number" id="pl-k" value="0" step="0.1" oninput="calcPlan()">
+          <span class="unit">帖（ワンルームは0）</span>
+        </div>
+        <div class="calc-row">
+          <label>收納 / 押入</label>
+          <input type="number" id="pl-cl" value="1.5" step="0.1" oninput="calcPlan()">
+          <span class="unit">帖</span>
+        </div>
+      </div>
+    </div>
+    <div class="area-grid">
+      <div class="area-card"><div class="a-label">臥室實際面積</div><div class="a-val" id="pl-r-yo">—</div><div class="a-sub" id="pl-r-yo-sub"></div></div>
+      <div class="area-card"><div class="a-label">非居住空間</div><div class="a-val" id="pl-r-nonliv">—</div><div class="a-sub">廁所・走廊・牆壁</div></div>
+      <div class="area-card"><div class="a-label">居住面積比</div><div class="a-val" id="pl-r-ratio">—</div><div class="a-sub">建議 60% 以上</div></div>
+      <div class="area-card"><div class="a-label">舒適度判定</div><div class="a-val" id="pl-r-comfort" style="font-family:'Noto Sans TC',sans-serif;font-size:15px">—</div></div>
+    </div>
+    <div class="fp-viz" id="fp-visual"></div>
+    <div id="pl-bars"></div>
+    <div id="pl-warn" class="alert" style="margin-top:8px"></div>
+  </div>
+
+  <!-- 舒適度 -->
+  <div class="tab-panel" id="rt-comfort">
+    <div class="comfort-grid">
+      <div class="comfort-card">
+        <div class="comfort-type">ワンルーム / 1K 狹小</div>
+        <div class="comfort-m2">15–20 m²（約 4.5–6 坪）</div>
+        <div class="comfort-bar-bg"><div class="comfort-bar-fill" style="width:30%;background:#e74c3c"></div></div>
+        <div class="comfort-desc">僅能放床＋小書桌，幾乎無轉身空間，家具選擇非常受限</div>
+      </div>
+      <div class="comfort-card">
+        <div class="comfort-type">1K 標準</div>
+        <div class="comfort-m2">20–26 m²（約 6–8 坪）</div>
+        <div class="comfort-bar-bg"><div class="comfort-bar-fill" style="width:52%;background:#e67e22"></div></div>
+        <div class="comfort-desc">語言學校生的常見選擇，床＋書桌＋衣架可放，稍微緊湊</div>
+      </div>
+      <div class="comfort-card">
+        <div class="comfort-type">1K 寬裕型</div>
+        <div class="comfort-m2">26–32 m²（約 8–10 坪）</div>
+        <div class="comfort-bar-bg"><div class="comfort-bar-fill" style="width:70%;background:#27ae60"></div></div>
+        <div class="comfort-desc">床＋書桌＋小沙發可放，生活不受拘束，推薦目標</div>
+      </div>
+      <div class="comfort-card">
+        <div class="comfort-type">1DK</div>
+        <div class="comfort-m2">30–40 m²（約 9–12 坪）</div>
+        <div class="comfort-bar-bg"><div class="comfort-bar-fill" style="width:82%;background:#1a6b5a"></div></div>
+        <div class="comfort-desc">廚房與臥室分離，生活空間感大幅提升，長期居住很舒適</div>
+      </div>
+      <div class="comfort-card">
+        <div class="comfort-type">1LDK</div>
+        <div class="comfort-m2">40 m² 以上（12 坪以上）</div>
+        <div class="comfort-bar-bg"><div class="comfort-bar-fill" style="width:96%;background:#2980b9"></div></div>
+        <div class="comfort-desc">有獨立客廳，家租金較高，適合計劃長期定居者</div>
+      </div>
+    </div>
+    <div class="alert alert-info" style="margin-top:16px">語言學校留學生（非藝術生）無特殊空間需求，建議目標 <strong>20m² 以上的 1K</strong>，預算充裕的話選 25m² 以上更舒適。</div>
+  </div>
+</section>
+
+<!-- ── SECTION 4: 生活費計算 ── -->
+<section class="page-section" id="cost-calc">
+  <div class="s-header">
+    <span class="s-num">04</span>
+    <div>
+      <div class="s-title">每月生活費試算</div>
+      <div class="s-sub">輸入各項費用，計算每月總支出與預算餘裕</div>
+    </div>
+  </div>
+  <div class="calc-grid">
+    <div class="calc-group">
+      <div class="calc-group-title">住居費</div>
+      <div class="calc-row"><label>家賃（房租）</label><input type="number" id="c-rent" value="45000" step="500" oninput="calcCost()"><span class="unit">円</span></div>
+      <div class="calc-row"><label>管理費・共益費</label><input type="number" id="c-kanri" value="3000" step="500" oninput="calcCost()"><span class="unit">円</span></div>
+    </div>
+    <div class="calc-group">
+      <div class="calc-group-title">光熱水費</div>
+      <div class="calc-row"><label>電費</label><input type="number" id="c-denki" value="3500" step="100" oninput="calcCost()"><span class="unit">円</span></div>
+      <div class="calc-row"><label>瓦斯費</label><input type="number" id="c-gas" value="2500" step="100" oninput="calcCost()"><span class="unit">円（全電化=0）</span></div>
+      <div class="calc-row"><label>水道費</label><input type="number" id="c-water" value="1500" step="100" oninput="calcCost()"><span class="unit">円（2月一次≈3000）</span></div>
+    </div>
+    <div class="calc-group">
+      <div class="calc-group-title">通信費</div>
+      <div class="calc-row"><label>網路費</label><input type="number" id="c-net" value="3000" step="100" oninput="calcCost()"><span class="unit">円（含網路=0）</span></div>
+      <div class="calc-row"><label>手機費</label><input type="number" id="c-phone" value="2000" step="100" oninput="calcCost()"><span class="unit">円</span></div>
+    </div>
+    <div class="calc-group">
+      <div class="calc-group-title">語言學校費用</div>
+      <div class="calc-row"><label>學費月均</label><input type="number" id="c-school" value="60000" step="1000" oninput="calcCost()"><span class="unit">円</span></div>
+      <div class="calc-row"><label>交通費（通學）</label><input type="number" id="c-transit" value="5000" step="100" oninput="calcCost()"><span class="unit">円</span></div>
+    </div>
+    <div class="calc-group">
+      <div class="calc-group-title">日常生活費</div>
+      <div class="calc-row"><label>飲食費</label><input type="number" id="c-food" value="25000" step="1000" oninput="calcCost()"><span class="unit">円</span></div>
+      <div class="calc-row"><label>日用品・雜費</label><input type="number" id="c-misc" value="5000" step="500" oninput="calcCost()"><span class="unit">円</span></div>
+      <div class="calc-row"><label>娛樂・外食</label><input type="number" id="c-ent" value="8000" step="500" oninput="calcCost()"><span class="unit">円</span></div>
+    </div>
+    <div class="calc-group">
+      <div class="calc-group-title">預算設定</div>
+      <div class="calc-row"><label>每月可用預算</label><input type="number" id="c-budget" value="200000" step="5000" oninput="calcCost()"><span class="unit">円（含父母匯款）</span></div>
+    </div>
+  </div>
+
+  <div class="result-strip">
+    <div class="r-item"><div class="r-label">住居費合計</div><div class="r-val" id="cr-housing">—</div><div class="r-sub">房租＋管理費</div></div>
+    <div class="r-item"><div class="r-label">光熱水費</div><div class="r-val" id="cr-util">—</div><div class="r-sub">電＋瓦斯＋水</div></div>
+    <div class="r-item"><div class="r-label">每月總支出</div><div class="r-val" id="cr-total">—</div></div>
+    <div class="r-item"><div class="r-label">剩餘 / 超支</div><div class="r-val" id="cr-remain">—</div><div class="r-sub" id="cr-remain-sub"></div></div>
+  </div>
+  <div id="cr-warn" class="alert" style="margin-bottom:16px"></div>
+  <div id="cr-bars"></div>
+</section>
+
+<!-- ── SECTION 5: 水電瓦斯 ── -->
+<section class="page-section" id="utility">
+  <div class="s-header">
+    <span class="s-num">05</span>
+    <div>
+      <div class="s-title">水電瓦斯費用詳解</div>
+      <div class="s-sub">看屋時必須確認的光熱費關鍵項目</div>
+    </div>
+  </div>
+  <div class="util-highlight">⚠️ 瓦斯種類是最常被忽略的陷阱：プロパンガス（丙烷）費用約是都市ガス的 <strong>1.5〜2 倍</strong>，一年差距可達 3 萬円以上。看屋時務必確認！</div>
+  <table style="margin-top:16px">
+    <thead><tr><th>費用項目</th><th>一人月均</th><th style="min-width:200px">看屋時注意</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>電費</strong><br><span style="font-size:11px;color:var(--ink3)">関西電力管轄</span></td>
+        <td>2,000–5,000円<br><span style="font-size:11px;color:var(--ink3)">夏冬月份偏高</span></td>
+        <td>確認<span class="badge b-info">アンペア数</span>（安培數）。1K 通常 20–30A，舊屋僅 15A，電熱水器＋電暖器同時開容易跳電</td>
+      </tr>
+      <tr>
+        <td><strong>瓦斯費</strong><br><span style="font-size:11px;color:var(--ink3)">都市ガス vs プロパン</span></td>
+        <td>都市ガス：1,500–3,000円<br><span style="font-size:11px;color:#c62828">プロパン：3,000–6,000円</span></td>
+        <td><span class="badge b-danger">プロパンは約 2 倍</span> 舊式アパート多為丙烷瓦斯。確認方式：租屋平台搜尋頁面可篩選「都市ガス」</td>
+      </tr>
+      <tr>
+        <td><strong>水道費</strong><br><span style="font-size:11px;color:var(--ink3)">通常2個月一次計費</span></td>
+        <td>1,000–2,000円/月<br>（兩月合計 2,000–4,000円）</td>
+        <td>部分物件<span class="badge b-ok">水道込み</span>（含在管理費），不需另付。確認合約再計入預算</td>
+      </tr>
+      <tr>
+        <td><strong>暖房費（冬季特別）</strong><br><span style="font-size:11px;color:var(--ink3)">京都 11月〜3月</span></td>
+        <td>額外增加 3,000–8,000円<br>（視暖氣設備而定）</td>
+        <td>京都冬天濕冷，暖氣是必需。確認有無<span class="badge b-info">冷暖兩用エアコン</span>；舊屋若只有電熱器，冬季電費非常高</td>
+      </tr>
+      <tr>
+        <td><strong>網路費</strong></td>
+        <td>自申請：2,000–5,000円<br>含網路物件：0円</td>
+        <td><span class="badge b-ok">インターネット無料</span> 省月費且免等待（自申請需 1–3 週開通＋初裝費約 1–2 萬円）</td>
+      </tr>
+      <tr>
+        <td><strong>NHK 受信料</strong></td>
+        <td>約 1,300円/月</td>
+        <td>有電視則強制繳納，無電視可拒絕。留學生部分可申請減免資格，向NHK洽詢</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:24px;font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:12px">租屋平台關鍵標示速查</div>
+  <table>
+    <thead><tr><th>平台標示</th><th>意思</th><th>評價</th></tr></thead>
+    <tbody>
+      <tr><td>都市ガス</td><td>城市管道瓦斯</td><td><span class="badge b-ok">費用低，優先選擇</span></td></tr>
+      <tr><td>プロパン / LPガス</td><td>丙烷桶裝瓦斯</td><td><span class="badge b-danger">費用約 2 倍，注意</span></td></tr>
+      <tr><td>オール電化</td><td>全電化（無瓦斯）</td><td><span class="badge b-info">電費略高但無瓦斯費，夜間優惠</span></td></tr>
+      <tr><td>水道込み</td><td>水費含在管理費內</td><td><span class="badge b-ok">省錢省手續</span></td></tr>
+      <tr><td>インターネット無料</td><td>含網路費</td><td><span class="badge b-ok">省月費且免申請等待</span></td></tr>
+      <tr><td>管理費 〇〇円</td><td>每月管理費</td><td><span class="badge b-warn">必須加入每月支出計算！</span></td></tr>
+      <tr><td>敷金なし / 礼金なし</td><td>無押金 / 無謝禮金</td><td><span class="badge b-ok">可省初期費用</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── SECTION 6: 看屋清單 ── -->
+<section class="page-section" id="checklist">
+  <div class="s-header">
+    <span class="s-num">06</span>
+    <div>
+      <div class="s-title">看屋確認清單</div>
+      <div class="s-sub">勾選已確認的項目，追蹤看屋進度</div>
+    </div>
+  </div>
+  <div class="check-counter" id="chk-counter">已確認 0 / 28 項</div>
+  <div class="check-progress-bar"><div class="check-progress-fill" id="chk-bar" style="width:0%"></div></div>
+
+  <div id="checklist-container"></div>
+</section>
+
+<!-- ── SECTION 7: 初期費用 ── -->
+<section class="page-section" id="initial-cost">
+  <div class="s-header">
+    <span class="s-num">07</span>
+    <div>
+      <div class="s-title">初期費用一覽</div>
+      <div class="s-sub">搬入前需準備的一次性費用計算</div>
+    </div>
+  </div>
+  <div class="calc-grid" style="grid-template-columns:1fr">
+    <div class="calc-group">
+      <div class="calc-group-title">輸入月租金，自動試算初期費用範圍</div>
+      <div class="calc-row">
+        <label>每月家賃</label>
+        <input type="number" id="ini-rent" value="45000" step="500" oninput="calcInitial()">
+        <span class="unit">円/月</span>
+      </div>
+    </div>
+  </div>
+  <div id="ini-results"></div>
+  <table style="margin-top:16px">
+    <thead><tr><th>費用項目</th><th>金額目安</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr><td>敷金（押金）</td><td>家賃 1〜2 個月</td><td>退租時扣除損耗費用後返還，確認返還條件</td></tr>
+      <tr><td>礼金（謝禮金）</td><td>0〜2 個月</td><td>不退還，近年零礼金物件增多，優先選擇</td></tr>
+      <tr><td>仲介手数料</td><td>0.5〜1 個月＋稅</td><td>法律上限1個月，部分仲介收半個月</td></tr>
+      <tr><td>保証会社費用</td><td>初年 0.5〜1 個月</td><td>外國人多需透過保証会社；每年續約約1萬円</td></tr>
+      <tr><td>火災保険</td><td>約 1.5〜2 萬円/2年</td><td>強制加入，通常2年一期</td></tr>
+      <tr><td>鍵交換費</td><td>約 1.5〜2 萬円</td><td>可嘗試交涉，確認是否必要</td></tr>
+      <tr><td>室内消毒費</td><td>約 1〜2 萬円</td><td>常見加收費用，可嘗試拒絕協商</td></tr>
+      <tr><td style="font-weight:500">合計（約）</td><td style="font-weight:500;color:var(--accent)">家賃 4〜6 個月分</td><td>以4.5萬円/月計，大約需備 18〜27 萬円</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── SECTION 8: 注意事項 ── -->
+<section class="page-section" id="tips">
+  <div class="s-header">
+    <span class="s-num">08</span>
+    <div>
+      <div class="s-title">租屋注意事項</div>
+      <div class="s-sub">外國人留學生常踩的坑與實用建議</div>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTipsTab('gaijin')">外國人注意</button>
+    <button class="tab-btn" onclick="showTipsTab('contract')">合約細節</button>
+    <button class="tab-btn" onclick="showTipsTab('life')">入住後生活</button>
+    <button class="tab-btn" onclick="showTipsTab('search')">找屋策略</button>
+  </div>
+
+  <div class="tab-panel active" id="tt-gaijin">
+    <div style="display:grid;gap:10px">
+      <div class="alert alert-warn">部分房東拒租外國人。搜尋時開啟「<strong>外国人可</strong>」篩選，未標示請先詢問，避免看了才被拒。</div>
+      <div class="alert alert-info">語言學校通常可協助尋屋或擔保，入學前先詢問學校是否有提供住宿介紹或合作不動産。</div>
+      <table>
+        <thead><tr><th>項目</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td>保証人問題</td><td>外國人難找日本人保証人，改用<span class="badge b-info">保証会社</span>（費用約月租0.5〜1個月）。確認保証会社是否接受留學簽證</td></tr>
+          <tr><td>在留資格</td><td>留學簽證（留学ビザ）是必要條件，需提供護照、在留カード</td></tr>
+          <tr><td>在籍証明書</td><td>語言學校提供的就學證明，申請房屋必備文件</td></tr>
+          <tr><td>収入証明</td><td>父母存款証明書（英文或日文）或保証人収入証明</td></tr>
+          <tr><td>住民票登録</td><td>入住後14天內至<strong>區役所</strong>辦理轉入手續，是法律義務</td></tr>
+          <tr><td>友善物件類型</td><td>學校宿舍、Share House（Sakura House等外國人友善品牌）、UR都市機構（政府物件，無需保証人）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tt-contract">
+    <table>
+      <thead><tr><th>條款項目</th><th>需確認內容</th></tr></thead>
+      <tbody>
+        <tr><td>契約期間</td><td>通常2年，中途解約需提前1〜2個月通知，並支付違約金（通常1〜2個月家賃）</td></tr>
+        <tr><td>更新料</td><td>部分物件每2年需支付「更新料」約1個月家賃，入住前務必確認有無</td></tr>
+        <tr><td>原狀回復義務</td><td>退租時需還原至入住狀態。確認責任範圍（牆壁、地板、清潔等），入住當天拍照留存所有損傷</td></tr>
+        <tr><td>禁止事項</td><td>禁養寵物、禁轉租、禁樂器、禁釘釘子（部分）。藝術/音樂需求請確認「楽器相談可」</td></tr>
+        <tr><td>合約語言</td><td>全為日文，建議請學校老師或日語能力強的人協助確認，尤其注意解約條件與賠償條款</td></tr>
+        <tr><td>鍵の返却</td><td>退租時鍵（鑰匙）全數歸還；若遺失需自費換鎖（1〜2萬円）</td></tr>
+      </tbody>
+    </table>
+    <div class="alert alert-warn" style="margin-top:12px">入住當天用手機拍下牆壁、地板、天花板所有現有損傷，傳給房東或存證，退租時的糾紛幾乎都因此而起。</div>
+  </div>
+
+  <div class="tab-panel" id="tt-life">
+    <table>
+      <thead><tr><th>生活事項</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>垃圾分類</td><td>京都市各區分類規則嚴格，確認垃圾場位置與可丟時段。違規會被鄰居投訴</td></tr>
+        <tr><td>噪音規範</td><td>晚間10點後需保持安靜，日本鄰居對此非常敏感</td></tr>
+        <tr><td>水電申請</td><td>搬入前需自行申請開通電力（電力会社）、瓦斯（要預約開栓）、水道</td></tr>
+        <tr><td>腳踏車</td><td>學校周邊騎腳踏車非常方便，確認大樓有無免費停車位，勿亂停（違規會被拖吊）</td></tr>
+        <tr><td>來客規定</td><td>部分物件限制訪客過夜，確認合約規定</td></tr>
+        <tr><td>冬季保暖</td><td>京都冬天（12〜2月）濕冷，日照短。優先選擇南向、有冷暖兩用エアコン的物件。舊屋隔熱差需額外購置暖氣</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-panel" id="tt-search">
+    <table>
+      <thead><tr><th>策略</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td>主要找屋平台</td><td>SUUMO、HOME'S、athome、UR（政府物件）、Sakura House（外國人友善Share House）</td></tr>
+        <tr><td>最佳搜尋時間</td><td>避開2〜3月旺季，10月入學反而物件多、條件好談。建議提前2〜3個月開始搜尋</td></tr>
+        <tr><td>篩選關鍵字</td><td>「外国人可」「都市ガス」「インターネット無料」「エアコン付き」「南向き」「オートロック」</td></tr>
+        <tr><td>同物件多平台</td><td>同一物件通常在多個平台刊登，看上了直接聯絡仲介即可，不必每個都詢問</td></tr>
+        <tr><td>現場確認時間</td><td>建議早晨（日照方向）和傍晚（噪音、居酒屋等）各去一次，比只看白天準確</td></tr>
+        <tr><td>語言學校協助</td><td>大多數語言學校都有住宿介紹服務，可先詢問，有時還有合作優惠或擔保協助</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer>
+  <strong>京都芸術大学・語言學校留學生租屋完整指南</strong><br>
+  <span>資料僅供參考，家賃相場與費用可能隨時間變動，實際申請前請以最新物件資訊為準</span>
+</footer>
+
+<script>
+// ── TABS ──
+function showRoomTab(name){
+  document.querySelectorAll('#room-calc .tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active',['convert','plan','comfort'][i]===name);
+  });
+  ['rt-convert','rt-plan','rt-comfort'].forEach(id=>{
+    document.getElementById(id).classList.toggle('active',id==='rt-'+name);
+  });
+}
+function showTipsTab(name){
+  document.querySelectorAll('#tips .tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active',['gaijin','contract','life','search'][i]===name);
+  });
+  ['tt-gaijin','tt-contract','tt-life','tt-search'].forEach(id=>{
+    document.getElementById(id).classList.toggle('active',id==='tt-'+name);
+  });
+}
+
+// ── CONVERT ──
+function calcConvert(){
+  var v=parseFloat(document.getElementById('cv-val').value)||0;
+  var u=document.getElementById('cv-unit').value;
+  var joM2=parseFloat(document.getElementById('cv-jo').value);
+  var m2;
+  if(u==='m2') m2=v;
+  else if(u==='jo') m2=v*joM2;
+  else m2=v*3.306;
+  var jo=m2/joM2, tsubo=m2/3.306;
+  var feel=m2<15?'非常狹小':m2<20?'小巧套房':m2<26?'標準套房':m2<32?'舒適單人':m2<42?'寬裕1DK':'1LDK以上';
+  document.getElementById('r-m2').textContent=m2.toFixed(1)+' m²';
+  document.getElementById('r-jo').textContent=jo.toFixed(1)+' 帖';
+  document.getElementById('r-tsubo').textContent=tsubo.toFixed(1)+' 坪';
+  document.getElementById('r-feel').textContent=feel;
+}
+calcConvert();
+
+// ── PLAN ──
+function calcPlan(){
+  var total=parseFloat(document.getElementById('pl-total').value)||0;
+  var joM2=parseFloat(document.getElementById('pl-jo').value);
+  var yo=parseFloat(document.getElementById('pl-yo').value)||0;
+  var k=parseFloat(document.getElementById('pl-k').value)||0;
+  var cl=parseFloat(document.getElementById('pl-cl').value)||0;
+  var yoM=yo*joM2, kM=k*joM2, clM=cl*joM2;
+  var listed=yoM+kM+clM;
+  var nonLiv=Math.max(0,total-listed);
+  var ratio=total>0?Math.round(yoM/total*100):0;
+  document.getElementById('pl-r-yo').textContent=yoM.toFixed(1)+' m²';
+  document.getElementById('pl-r-yo-sub').textContent=yo+'帖 × '+joM2+'m²';
+  document.getElementById('pl-r-nonliv').textContent=nonLiv.toFixed(1)+' m²';
+  document.getElementById('pl-r-ratio').textContent=ratio+'%';
+  var comfort=yoM<12?'非常狹小':yoM<16?'普通':yoM<20?'舒適':' 寬裕';
+  var cColor=yoM<12?'#c62828':yoM<16?'#856404':yoM<20?'#0a5e38':'#0a3471';
+  var cEl=document.getElementById('pl-r-comfort');
+  cEl.textContent=comfort; cEl.style.color=cColor;
+
+  // Floor plan viz
+  var fp=document.getElementById('fp-visual');
+  var W=fp.offsetWidth||600, H=160;
+  var totalW=Math.min(W-24,Math.round(Math.sqrt(total)*28));
+  var totalH=Math.min(H-24,Math.round(total/Math.sqrt(total)*16));
+  var yoW=total>0?Math.round(yoM/total*totalW):0;
+  var kW=total>0?Math.round(kM/total*totalW):0;
+  var restW=totalW-yoW-kW;
+  var bx=Math.round((W-totalW)/2), by=Math.round((H-totalH)/2);
+  var html='';
+  html+='<div class="fp-room" style="left:'+bx+'px;top:'+by+'px;width:'+yoW+'px;height:'+totalH+'px;background:#e3f2fd;border-color:#1565c0"><span class="fp-name">洋室</span><span class="fp-size">'+yoM.toFixed(1)+'m²</span><span class="fp-size">'+yo+'帖</span></div>';
+  if(kM>0&&kW>10) html+='<div class="fp-room" style="left:'+(bx+yoW)+'px;top:'+by+'px;width:'+kW+'px;height:'+totalH+'px;background:#e8f5e9;border-color:#2e7d32"><span class="fp-name" style="font-size:10px">廚房</span><span class="fp-size">'+kM.toFixed(1)+'m²</span></div>';
+  if(restW>10) html+='<div class="fp-room" style="left:'+(bx+yoW+kW)+'px;top:'+by+'px;width:'+restW+'px;height:'+totalH+'px;background:#fafafa;border-color:#bbb"><span class="fp-name" style="font-size:10px">廁所<br>走廊</span><span class="fp-size">'+nonLiv.toFixed(1)+'m²</span></div>';
+  fp.innerHTML=html;
+
+  // Bars
+  var metrics=[
+    {label:'臥室空間感',pct:Math.min(100,Math.round(yoM/20*100)),good:yoM>=16,note:yoM.toFixed(1)+'m²（目標16m²以上）'},
+    {label:'收納充裕度',pct:Math.min(100,Math.round(cl/2*100)),good:cl>=2,note:cl+'帖（建議2帖以上）'},
+    {label:'有效居住比',pct:ratio,good:ratio>=60,note:ratio+'%（建議60%以上）'},
+    {label:'整體大小',pct:Math.min(100,Math.round(total/30*100)),good:total>=20,note:total+'m²（建議20m²以上）'}
+  ];
+  var bars=document.getElementById('pl-bars');
+  bars.innerHTML='';
+  metrics.forEach(function(m){
+    var color=m.good?'#1a6b5a':'#e67e22';
+    bars.innerHTML+='<div class="prog-row"><div class="prog-label"><span>'+m.label+'</span><span style="color:'+(m.good?'#0a5e38':'#856404')+'">'+m.note+'</span></div><div class="prog-bg"><div class="prog-fill" style="width:'+m.pct+'%;background:'+color+'"></div></div></div>';
+  });
+  var wEl=document.getElementById('pl-warn');
+  if(yoM<12){wEl.className='alert alert-danger';wEl.textContent='臥室僅 '+yoM.toFixed(1)+'m²，非常狹小。僅能放床，幾乎無其他空間，不建議。';}
+  else if(yoM<16){wEl.className='alert alert-warn';wEl.textContent='臥室 '+yoM.toFixed(1)+'m²，普通。床＋書桌可放，衣櫃空間有限，需確認收納。';}
+  else{wEl.className='alert alert-ok';wEl.textContent='臥室 '+yoM.toFixed(1)+'m²，舒適。可放床、書桌、衣櫃，語言學校生日常生活不受限。';}
+}
+calcPlan();
+
+// ── COST ──
+function calcCost(){
+  var rent=+document.getElementById('c-rent').value||0;
+  var kanri=+document.getElementById('c-kanri').value||0;
+  var denki=+document.getElementById('c-denki').value||0;
+  var gas=+document.getElementById('c-gas').value||0;
+  var water=+document.getElementById('c-water').value||0;
+  var net=+document.getElementById('c-net').value||0;
+  var phone=+document.getElementById('c-phone').value||0;
+  var school=+document.getElementById('c-school').value||0;
+  var transit=+document.getElementById('c-transit').value||0;
+  var food=+document.getElementById('c-food').value||0;
+  var misc=+document.getElementById('c-misc').value||0;
+  var ent=+document.getElementById('c-ent').value||0;
+  var budget=+document.getElementById('c-budget').value||1;
+  var housing=rent+kanri, util=denki+gas+water, comm=net+phone, edu=school+transit, life=food+misc+ent;
+  var total=housing+util+comm+edu+life, remain=budget-total;
+  document.getElementById('cr-housing').textContent=housing.toLocaleString()+'円';
+  document.getElementById('cr-util').textContent=util.toLocaleString()+'円';
+  document.getElementById('cr-total').textContent=total.toLocaleString()+'円';
+  var rEl=document.getElementById('cr-remain');
+  rEl.textContent=(remain>=0?'+':'')+remain.toLocaleString()+'円';
+  rEl.style.color=remain>=0?'var(--paper)':'#f97171';
+  document.getElementById('cr-remain-sub').textContent=remain>=0?'尚有餘裕':'超出 '+Math.abs(remain).toLocaleString()+'円';
+  var rentRatio=Math.round(housing/budget*100);
+  var wEl=document.getElementById('cr-warn');
+  if(rentRatio>35){wEl.className='alert alert-danger';wEl.textContent='住居費佔預算 '+rentRatio+'%，過高（建議30%以內）。考慮降低房租或增加預算。';}
+  else if(rentRatio>28){wEl.className='alert alert-warn';wEl.textContent='住居費佔預算 '+rentRatio+'%，稍高但尚可。飲食與娛樂費需控制。';}
+  else{wEl.className='alert alert-ok';wEl.textContent='住居費佔預算 '+rentRatio+'%，比例健康，生活費有充足餘裕。';}
+  var cats=[{l:'住居費',v:housing},{l:'光熱水費',v:util},{l:'通信費',v:comm},{l:'學費・交通',v:edu},{l:'飲食・生活',v:life}];
+  var bars=document.getElementById('cr-bars');
+  bars.innerHTML='';
+  cats.forEach(function(c){
+    var pct=Math.min(100,Math.round(c.v/budget*100));
+    var color=pct>35?'#c0392b':pct>25?'#e67e22':'#1a6b5a';
+    bars.innerHTML+='<div class="prog-row"><div class="prog-label"><span>'+c.l+'</span><span>'+c.v.toLocaleString()+'円 ('+pct+'%)</span></div><div class="prog-bg"><div class="prog-fill" style="width:'+pct+'%;background:'+color+'"></div></div></div>';
+  });
+}
+calcCost();
+
+// ── INITIAL COST ──
+function calcInitial(){
+  var r=+document.getElementById('ini-rent').value||0;
+  var lo=Math.round(r*4), hi=Math.round(r*6);
+  document.getElementById('ini-results').innerHTML=
+    '<div class="result-strip" style="grid-template-columns:1fr 1fr 1fr">'+
+    '<div class="r-item"><div class="r-label">最低試算（敷1礼0）</div><div class="r-val">'+lo.toLocaleString()+'円</div></div>'+
+    '<div class="r-item"><div class="r-label">一般試算（敷1礼1）</div><div class="r-val">'+Math.round(r*5).toLocaleString()+'円</div></div>'+
+    '<div class="r-item"><div class="r-label">最高試算（敷2礼2）</div><div class="r-val">'+hi.toLocaleString()+'円</div></div>'+
+    '</div>';
+}
+calcInitial();
+
+// ── CHECKLIST ──
+var checkData=[
+  {cat:'基本條件',items:[
+    {t:'確認「外国人可」',n:'未標示先詢問仲介，避免看完後才拒絕'},
+    {t:'確認瓦斯種類（都市ガス vs プロパン）',n:'丙烷費用約2倍，租屋平台可篩選'},
+    {t:'確認家賃＋管理費合計',n:'管理費容易被忽略，是每月固定支出'},
+    {t:'確認敷金・礼金・更新料',n:'確認退租時敷金返還條件'},
+    {t:'確認契約期間與中途解約條件',n:'解約違約金通常1〜2個月家賃'},
+  ]},
+  {cat:'房間狀況',items:[
+    {t:'日照方向（南向最佳）',n:'現場確認光線，避免北向陰暗房'},
+    {t:'採光・窗戶數量',n:'角部屋有兩面窗，採光通風最好'},
+    {t:'隔熱・冬季保暖',n:'京都冬天濕冷，確認雙層玻璃或隔熱材，1980年前老屋特別注意'},
+    {t:'收納空間（押入・クローゼット）',n:'確認深度與容量，建議2帖以上'},
+    {t:'網路設備確認',n:'「インターネット無料」省費省手續；無則需自行申請並等待1〜3週'},
+    {t:'冷暖兩用エアコン有無',n:'確認是否冷暖兩用，京都冬天暖氣是必需'},
+  ]},
+  {cat:'浴室・廚房',items:[
+    {t:'確認3點獨立（セパレート）vs 3點一體（ユニット）',n:'3點獨立（廁所/浴室/洗臉台分離）明顯更舒適'},
+    {t:'瓦斯 vs 電磁爐廚房',n:'瓦斯火力強，IH清潔方便，依習慣選擇'},
+    {t:'熱水器類型・追焚き有無',n:'「追焚き」可二次加熱浴缸水，是加分功能'},
+    {t:'室内洗濯機置場確認',n:'室内比室外方便且安靜'},
+  ]},
+  {cat:'設備・安全',items:[
+    {t:'オートロック（門禁）有無',n:'安全性高，女性優先考慮'},
+    {t:'宅配ボックス有無',n:'不在家自動收包裹，網購族重要'},
+    {t:'安培數（アンペア数）確認',n:'1K建議20〜30A；舊屋15A電熱器＋熱水器同開易跳電'},
+    {t:'樓層（建議2F以上）',n:'1樓濕氣重、安全性低；女性尤其注意'},
+  ]},
+  {cat:'周邊環境',items:[
+    {t:'垃圾場位置與使用規則確認',n:'各區分類不同，違規會被投訴'},
+    {t:'噪音源調查',n:'建議早晚各去一次；確認是否靠近幹道、鐵軌、居酒屋'},
+    {t:'腳踏車停放空間',n:'確認大樓有無免費停車位'},
+    {t:'超市・便利商店距離',n:'步行10分鐘內有超市最理想'},
+  ]},
+  {cat:'合約・入住手續',items:[
+    {t:'入住當天拍照記錄所有損傷',n:'傳給房東留存，退租時的糾紛幾乎都因此而起'},
+    {t:'水電瓦斯開通申請',n:'搬入前需各自申請；瓦斯需預約「開栓」（上門開通）'},
+    {t:'14天內至區役所辦理住民票',n:'是法律義務，辦理後才有各種地方服務資格'},
+    {t:'火災保険加入',n:'通常強制加入，確認是否已含在仲介服務中'},
+  ]}
+];
+
+function buildChecklist(){
+  var container=document.getElementById('checklist-container');
+  var total=0;
+  checkData.forEach(function(sec,si){
+    var div=document.createElement('div');
+    div.className='check-section';
+    div.innerHTML='<div class="check-section-title">'+sec.cat+'</div>';
+    sec.items.forEach(function(item,ii){
+      total++;
+      var id='chk-'+si+'-'+ii;
+      var itemDiv=document.createElement('div');
+      itemDiv.className='check-item';
+      itemDiv.innerHTML='<input type="checkbox" id="'+id+'" onchange="updateCheckProgress()"><label for="'+id+'" style="cursor:pointer;flex:1"><div class="check-item-content"><div class="c-title">'+item.t+'</div><div class="c-note">'+item.n+'</div></div></label>';
+      div.appendChild(itemDiv);
+    });
+    container.appendChild(div);
+  });
+}
+function updateCheckProgress(){
+  var all=document.querySelectorAll('#checklist-container input[type=checkbox]');
+  var checked=document.querySelectorAll('#checklist-container input[type=checkbox]:checked');
+  var pct=Math.round(checked.length/all.length*100);
+  document.getElementById('chk-counter').textContent='已確認 '+checked.length+' / '+all.length+' 項';
+  document.getElementById('chk-bar').style.width=pct+'%';
+}
+buildChecklist();
+</script>
+</body>
+</html>
