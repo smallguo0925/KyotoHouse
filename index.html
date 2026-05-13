@@ -333,10 +333,12 @@ footer strong{color:rgba(247,244,239,0.7)}
     <a href="#madori">間取り</a>
     <a href="#room-calc">坪數計算</a>
     <a href="#cost-calc">生活費</a>
+    <a href="#twd-calc">台幣換算</a>
     <a href="#utility">水電瓦斯</a>
     <a href="#checklist">看屋清單</a>
     <a href="#initial-cost">初期費用</a>
     <a href="#tips">注意事項</a>
+    <a href="#property-eval">物件評估</a>
   </div>
 </nav>
 
@@ -676,7 +678,74 @@ footer strong{color:rgba(247,244,239,0.7)}
   <div id="cr-warn" class="alert" style="margin-bottom:16px"></div>
   <div id="cr-bars"></div>
 </section>
+<!-- ── SECTION 10: 台幣匯率換算 ── -->
+<section class="page-section" id="twd-calc">
+  <div class="s-header">
+    <span class="s-num">10</span>
+    <div>
+      <div class="s-title">台幣換算對照表</div>
+      <div class="s-sub">輸入匯率，將所有費用換算為台幣</div>
+    </div>
+  </div>
 
+  <div class="calc-grid" style="grid-template-columns:1fr">
+    <div class="calc-group">
+      <div class="calc-group-title">匯率設定</div>
+      <div class="calc-row">
+        <label>1 日圓 ＝</label>
+        <input type="number" id="twd-rate" value="0.22" step="0.001" min="0.1" max="1" oninput="calcTWD()">
+        <span class="unit">台幣（TWD）</span>
+        <span style="font-size:11px;color:var(--ink3);margin-left:8px">※ 請輸入當前匯率，預設 0.22</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 常見費用換算表 -->
+  <div style="margin-bottom:14px;font-size:13px;font-weight:500;color:var(--ink2)">常見費用台幣對照</div>
+  <table id="twd-table">
+    <thead>
+      <tr>
+        <th>費用項目</th>
+        <th>日圓（円）</th>
+        <th>台幣（TWD）</th>
+        <th>說明</th>
+      </tr>
+    </thead>
+    <tbody id="twd-tbody"></tbody>
+  </table>
+
+  <!-- 從生活費計算機同步 -->
+  <div style="margin-top:28px;margin-bottom:14px;font-size:13px;font-weight:500;color:var(--ink2)">
+    與生活費計算機同步結果
+    <span style="font-size:11px;font-weight:400;color:var(--ink3);margin-left:8px">↑ 請先在第04節填寫生活費數字</span>
+  </div>
+  <div class="result-strip" id="twd-sync-strip">
+    <div class="r-item"><div class="r-label">住居費</div><div class="r-val" id="ts-housing">—</div><div class="r-sub">TWD/月</div></div>
+    <div class="r-item"><div class="r-label">光熱水費</div><div class="r-val" id="ts-util">—</div><div class="r-sub">TWD/月</div></div>
+    <div class="r-item"><div class="r-label">學費・交通</div><div class="r-val" id="ts-edu">—</div><div class="r-sub">TWD/月</div></div>
+    <div class="r-item"><div class="r-label">飲食・生活</div><div class="r-val" id="ts-life">—</div><div class="r-sub">TWD/月</div></div>
+    <div class="r-item"><div class="r-label">每月總支出</div><div class="r-val" id="ts-total">—</div><div class="r-sub">TWD/月</div></div>
+    <div class="r-item"><div class="r-label">每年總支出</div><div class="r-val" id="ts-year">—</div><div class="r-sub">TWD/年</div></div>
+  </div>
+
+  <!-- 初期費用台幣試算 -->
+  <div style="margin-top:28px;margin-bottom:14px;font-size:13px;font-weight:500;color:var(--ink2)">搬入初期費用台幣試算</div>
+  <div class="calc-grid" style="grid-template-columns:1fr">
+    <div class="calc-group">
+      <div class="calc-group-title">輸入月租金（日圓）</div>
+      <div class="calc-row">
+        <label>家賃</label>
+        <input type="number" id="twd-ini-rent" value="45000" step="500" oninput="calcTWD()">
+        <span class="unit">円/月</span>
+      </div>
+    </div>
+  </div>
+  <div class="result-strip" id="twd-ini-strip" style="grid-template-columns:repeat(3,1fr)">
+    <div class="r-item"><div class="r-label">初期費用最低（×4）</div><div class="r-val" id="ti-lo">—</div><div class="r-sub">TWD</div></div>
+    <div class="r-item"><div class="r-label">初期費用一般（×5）</div><div class="r-val" id="ti-mid">—</div><div class="r-sub">TWD</div></div>
+    <div class="r-item"><div class="r-label">初期費用最高（×6）</div><div class="r-val" id="ti-hi">—</div><div class="r-sub">TWD</div></div>
+  </div>
+</section>
 <!-- ── SECTION 5: 水電瓦斯 ── -->
 <section class="page-section" id="utility">
   <div class="s-header">
@@ -866,6 +935,142 @@ footer strong{color:rgba(247,244,239,0.7)}
   </div>
 </section>
 
+<!-- ── SECTION 11: 物件評估工具 ── -->
+<section class="page-section" id="property-eval">
+  <div class="s-header">
+    <span class="s-num">11</span>
+    <div>
+      <div class="s-title">物件評估工具</div>
+      <div class="s-sub">輸入租屋網站上的物件資訊，自動評分並列出優缺點</div>
+    </div>
+  </div>
+
+  <div class="calc-grid">
+    <!-- 左欄：基本資訊 -->
+    <div class="calc-group">
+      <div class="calc-group-title">基本費用資訊</div>
+      <div class="calc-row"><label>家賃</label>
+        <input type="number" id="ev-rent" value="45000" step="500" oninput="evalProperty()">
+        <span class="unit">円/月</span>
+      </div>
+      <div class="calc-row"><label>管理費・共益費</label>
+        <input type="number" id="ev-kanri" value="3000" step="500" oninput="evalProperty()">
+        <span class="unit">円/月</span>
+      </div>
+      <div class="calc-row"><label>敷金</label>
+        <input type="number" id="ev-shiki" value="1" step="0.5" min="0" max="3" oninput="evalProperty()">
+        <span class="unit">個月</span>
+      </div>
+      <div class="calc-row"><label>礼金</label>
+        <input type="number" id="ev-rei" value="1" step="0.5" min="0" max="3" oninput="evalProperty()">
+        <span class="unit">個月</span>
+      </div>
+      <div class="calc-row"><label>更新料</label>
+        <select id="ev-koshin" onchange="evalProperty()">
+          <option value="0">なし（無更新料）</option>
+          <option value="1" selected>あり（1個月）</option>
+          <option value="0.5">あり（0.5個月）</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 右欄：物件條件 -->
+    <div class="calc-group">
+      <div class="calc-group-title">物件條件</div>
+      <div class="calc-row"><label>總面積</label>
+        <input type="number" id="ev-m2" value="25.5" step="0.5" oninput="evalProperty()">
+        <span class="unit">m²</span>
+      </div>
+      <div class="calc-row"><label>臥室疊數</label>
+        <input type="number" id="ev-jo" value="9.3" step="0.1" oninput="evalProperty()">
+        <span class="unit">帖（京間）</span>
+      </div>
+      <div class="calc-row"><label>屋齡</label>
+        <input type="number" id="ev-age" value="15" step="1" oninput="evalProperty()">
+        <span class="unit">年</span>
+      </div>
+      <div class="calc-row"><label>樓層</label>
+        <input type="number" id="ev-floor" value="3" step="1" min="1" oninput="evalProperty()">
+        <span class="unit">F</span>
+      </div>
+      <div class="calc-row"><label>朝向</label>
+        <select id="ev-dir" onchange="evalProperty()">
+          <option value="4">南向（最佳）</option>
+          <option value="3">東向</option>
+          <option value="2" selected>西向</option>
+          <option value="1">北向（最差）</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 設備チェック -->
+    <div class="calc-group">
+      <div class="calc-group-title">設備・環境</div>
+      <div class="calc-row"><label>瓦斯種類</label>
+        <select id="ev-gas" onchange="evalProperty()">
+          <option value="2">都市ガス ✓</option>
+          <option value="0">プロパンガス</option>
+          <option value="1">オール電化</option>
+        </select>
+      </div>
+      <div class="calc-row"><label>建築結構</label>
+        <select id="ev-struct" onchange="evalProperty()">
+          <option value="3">RC（鋼筋混凝土）</option>
+          <option value="2">SRC</option>
+          <option value="1" selected>木造 / 軽量鉄骨</option>
+        </select>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px" id="ev-equip-grid"></div>
+    </div>
+
+    <!-- 區域相場比較 -->
+    <div class="calc-group">
+      <div class="calc-group-title">與周邊相場比較</div>
+      <div class="calc-row"><label>所在區域</label>
+        <select id="ev-area" onchange="evalProperty()">
+          <option value="45000">北大路周辺（相場 45,000円）</option>
+          <option value="46000">茶山・元田中（相場 46,000円）</option>
+          <option value="48000">出町柳周辺（相場 48,000円）</option>
+          <option value="43000">北白川エリア（相場 43,000円）</option>
+          <option value="0">その他 / 不明</option>
+        </select>
+      </div>
+      <div id="ev-area-result" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <!-- 評分結果 -->
+  <div style="margin-top:8px" id="ev-score-block">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--ink);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:16px">
+      <div style="text-align:center">
+        <div style="font-size:11px;color:rgba(247,244,239,0.5);letter-spacing:.06em;margin-bottom:4px">綜合評分</div>
+        <div id="ev-score-num" style="font-family:'DM Mono',monospace;font-size:52px;color:var(--paper);line-height:1">—</div>
+        <div id="ev-score-label" style="font-size:12px;color:rgba(247,244,239,0.6);margin-top:4px">—</div>
+      </div>
+      <div id="ev-score-bars" style="display:grid;gap:6px"></div>
+    </div>
+
+    <!-- 台幣換算 -->
+    <div class="result-strip" style="margin-bottom:16px" id="ev-twd-strip">
+      <div class="r-item"><div class="r-label">月費合計（円）</div><div class="r-val" id="ev-monthly-jpy">—</div></div>
+      <div class="r-item"><div class="r-label">月費合計（TWD）</div><div class="r-val" id="ev-monthly-twd">—</div></div>
+      <div class="r-item"><div class="r-label">初期費用（円）</div><div class="r-val" id="ev-ini-jpy">—</div></div>
+      <div class="r-item"><div class="r-label">初期費用（TWD）</div><div class="r-val" id="ev-ini-twd">—</div></div>
+    </div>
+
+    <!-- 優缺點 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card-white">
+        <div style="font-size:12px;font-weight:500;color:var(--teal);margin-bottom:10px;padding-bottom:6px;border-bottom:0.5px solid var(--border)">✓ 優點</div>
+        <div id="ev-pros" style="font-size:12px;color:var(--ink2);line-height:1.8"></div>
+      </div>
+      <div class="card-white">
+        <div style="font-size:12px;font-weight:500;color:var(--accent);margin-bottom:10px;padding-bottom:6px;border-bottom:0.5px solid var(--border)">✗ 缺點 / 注意</div>
+        <div id="ev-cons" style="font-size:12px;color:var(--ink2);line-height:1.8"></div>
+      </div>
+    </div>
+  </div>
+</section>
 </div><!-- /container -->
 
 <footer>
@@ -1087,6 +1292,290 @@ function updateCheckProgress(){
   document.getElementById('chk-bar').style.width=pct+'%';
 }
 buildChecklist();
+
+// ══════════════════════════════════════
+// TWD 換算相關常數（費用項目對照表）
+// ══════════════════════════════════════
+var TWD_ITEMS = [
+  { label: '家賃（月租，相場4.3〜4.8萬円）', lo: 43000, hi: 48000, note: '依區域不同' },
+  { label: '管理費・共益費', lo: 2000, hi: 5000, note: '每月固定' },
+  { label: '敷金（押金，1個月）', lo: 43000, hi: 48000, note: '退租時返還' },
+  { label: '礼金（謝禮金，1個月）', lo: 43000, hi: 48000, note: '不退還' },
+  { label: '仲介手数料', lo: 21500, hi: 48000, note: '0.5〜1個月' },
+  { label: '保証会社費（初年）', lo: 21500, hi: 48000, note: '每年續約約1萬円' },
+  { label: '火災保険（2年）', lo: 15000, hi: 20000, note: '強制加入' },
+  { label: '電費（月）', lo: 2000, hi: 5000, note: '夏冬偏高' },
+  { label: '瓦斯費・都市ガス（月）', lo: 1500, hi: 3000, note: '管道瓦斯' },
+  { label: '瓦斯費・プロパン（月）', lo: 3000, hi: 6000, note: '丙烷約2倍' },
+  { label: '水道費（月均）', lo: 1000, hi: 2000, note: '2個月一次計費' },
+  { label: '語言學校學費（月均）', lo: 55000, hi: 70000, note: '依學校而異' },
+  { label: '飲食費（月）', lo: 20000, hi: 30000, note: '自炊為主' },
+  { label: '交通費・通學（月）', lo: 3000, hi: 6000, note: '地鐵＋巴士' },
+];
+
+function fmtTWD(n) {
+  return 'NT$' + Math.round(n).toLocaleString();
+}
+function fmtJPY(n) {
+  return '¥' + Math.round(n).toLocaleString();
+}
+
+// ── TWD 換算主函式 ──
+function calcTWD() {
+  var rate = parseFloat(document.getElementById('twd-rate').value) || 0.22;
+
+  // 更新常見費用表
+  var tbody = document.getElementById('twd-tbody');
+  tbody.innerHTML = '';
+  TWD_ITEMS.forEach(function(item) {
+    var midJPY = Math.round((item.lo + item.hi) / 2);
+    var loTWD = fmtTWD(item.lo * rate);
+    var hiTWD = fmtTWD(item.hi * rate);
+    tbody.innerHTML +=
+      '<tr>' +
+      '<td>' + item.label + '</td>' +
+      '<td style="font-family:\'DM Mono\',monospace">' + item.lo.toLocaleString() + '〜' + item.hi.toLocaleString() + '</td>' +
+      '<td style="font-family:\'DM Mono\',monospace;color:var(--teal)">' + loTWD + '〜' + hiTWD + '</td>' +
+      '<td style="color:var(--ink3)">' + item.note + '</td>' +
+      '</tr>';
+  });
+
+  // 從生活費計算機同步
+  function getVal(id) { var el = document.getElementById(id); return el ? (parseFloat(el.value) || 0) : 0; }
+  var rent = getVal('c-rent'), kanri = getVal('c-kanri');
+  var denki = getVal('c-denki'), gas = getVal('c-gas'), water = getVal('c-water');
+  var school = getVal('c-school'), transit = getVal('c-transit');
+  var food = getVal('c-food'), misc = getVal('c-misc'), ent = getVal('c-ent');
+  var net = getVal('c-net'), phone = getVal('c-phone');
+  var housing = rent + kanri;
+  var util = denki + gas + water;
+  var edu = school + transit;
+  var life = food + misc + ent + net + phone;
+  var total = housing + util + edu + life;
+
+  document.getElementById('ts-housing').textContent = fmtTWD(housing * rate);
+  document.getElementById('ts-util').textContent = fmtTWD(util * rate);
+  document.getElementById('ts-edu').textContent = fmtTWD(edu * rate);
+  document.getElementById('ts-life').textContent = fmtTWD(life * rate);
+  document.getElementById('ts-total').textContent = fmtTWD(total * rate);
+  document.getElementById('ts-year').textContent = fmtTWD(total * rate * 12);
+
+  // 初期費用台幣
+  var iniRent = parseFloat(document.getElementById('twd-ini-rent').value) || 45000;
+  document.getElementById('ti-lo').textContent = fmtTWD(iniRent * 4 * rate);
+  document.getElementById('ti-mid').textContent = fmtTWD(iniRent * 5 * rate);
+  document.getElementById('ti-hi').textContent = fmtTWD(iniRent * 6 * rate);
+
+  // 同步物件評估的匯率（如果已評估）
+  evalProperty();
+}
+
+// ── 設備清單 ──
+var EV_EQUIP = [
+  { id: 'eq-aircon', label: '冷暖エアコン', score: 10 },
+  { id: 'eq-autolock', label: 'オートロック', score: 8 },
+  { id: 'eq-inet', label: 'ネット無料', score: 8 },
+  { id: 'eq-sep', label: '3点独立', score: 10 },
+  { id: 'eq-takuhai', label: '宅配ボックス', score: 4 },
+  { id: 'eq-furniture', label: '家具家電付き', score: 6 },
+  { id: 'eq-indoor-wash', label: '室内洗濯機置場', score: 5 },
+  { id: 'eq-bike', label: '駐輪場あり', score: 4 },
+];
+
+function buildEquipGrid() {
+  var grid = document.getElementById('ev-equip-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  EV_EQUIP.forEach(function(eq) {
+    grid.innerHTML +=
+      '<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);cursor:pointer;padding:4px 0">' +
+      '<input type="checkbox" id="' + eq.id + '" onchange="evalProperty()" style="accent-color:var(--teal)">' +
+      eq.label +
+      '</label>';
+  });
+}
+buildEquipGrid();
+
+// ── 物件評估主函式 ──
+function evalProperty() {
+  var rate = parseFloat(document.getElementById('twd-rate') ? document.getElementById('twd-rate').value : '0.22') || 0.22;
+  var rent = parseFloat(document.getElementById('ev-rent').value) || 0;
+  var kanri = parseFloat(document.getElementById('ev-kanri').value) || 0;
+  var shiki = parseFloat(document.getElementById('ev-shiki').value) || 0;
+  var rei = parseFloat(document.getElementById('ev-rei').value) || 0;
+  var koshin = parseFloat(document.getElementById('ev-koshin').value) || 0;
+  var m2 = parseFloat(document.getElementById('ev-m2').value) || 0;
+  var jo = parseFloat(document.getElementById('ev-jo').value) || 0;
+  var age = parseFloat(document.getElementById('ev-age').value) || 0;
+  var floor = parseFloat(document.getElementById('ev-floor').value) || 1;
+  var dir = parseInt(document.getElementById('ev-dir').value) || 2;
+  var gasVal = parseInt(document.getElementById('ev-gas').value);
+  var struct = parseInt(document.getElementById('ev-struct').value);
+  var areaMarket = parseInt(document.getElementById('ev-area').value) || 0;
+
+  // 設備分數
+  var equipScore = 0;
+  var checkedEquip = [];
+  var uncheckedEquip = [];
+  EV_EQUIP.forEach(function(eq) {
+    var el = document.getElementById(eq.id);
+    if (el && el.checked) { equipScore += eq.score; checkedEquip.push(eq.label); }
+    else uncheckedEquip.push(eq.label);
+  });
+
+  // ── 各項評分 ──
+  // 1. 費用合理性（30分）
+  var costScore = 0;
+  if (areaMarket > 0) {
+    var totalRent = rent + kanri;
+    var diff = totalRent - areaMarket;
+    if (diff <= -3000) costScore = 30;
+    else if (diff <= 0) costScore = 25;
+    else if (diff <= 3000) costScore = 18;
+    else if (diff <= 6000) costScore = 10;
+    else costScore = 3;
+  } else {
+    costScore = 15; // 無法比較給中間值
+  }
+  // 2. 空間舒適度（20分）
+  var yoM2 = jo * 1.82;
+  var spaceScore = yoM2 < 12 ? 4 : yoM2 < 16 ? 10 : yoM2 < 20 ? 16 : 20;
+  // 3. 設備（25分，上限25）
+  var equipFinal = Math.min(25, Math.round(equipScore * 25 / 55));
+  // 4. 建築條件（15分）
+  var buildScore = 0;
+  buildScore += dir === 4 ? 5 : dir === 3 ? 4 : dir === 2 ? 2 : 0; // 朝向
+  buildScore += floor >= 2 ? 3 : 0; // 樓層
+  buildScore += age <= 10 ? 4 : age <= 20 ? 3 : age <= 30 ? 1 : 0; // 屋齡
+  buildScore += struct === 3 ? 3 : struct === 2 ? 2 : 1; // 結構
+  // 5. 瓦斯（10分）
+  var gasScore = gasVal === 2 ? 10 : gasVal === 1 ? 7 : 2;
+  // 總分
+  var total = costScore + spaceScore + equipFinal + buildScore + gasScore;
+  var scoreLabel = total >= 80 ? '非常推薦' : total >= 65 ? '值得考慮' : total >= 50 ? '普通' : total >= 35 ? '需謹慎' : '不建議';
+  var scoreColor = total >= 80 ? '#1a6b5a' : total >= 65 ? '#2980b9' : total >= 50 ? '#e67e22' : '#c62828';
+
+  document.getElementById('ev-score-num').textContent = total;
+  document.getElementById('ev-score-num').style.color = scoreColor;
+  document.getElementById('ev-score-label').textContent = scoreLabel;
+
+  // 評分條
+  var bars = [
+    { label: '費用合理性', val: costScore, max: 30 },
+    { label: '空間舒適度', val: spaceScore, max: 20 },
+    { label: '設備充實度', val: equipFinal, max: 25 },
+    { label: '建築條件', val: buildScore, max: 15 },
+    { label: '瓦斯種類', val: gasScore, max: 10 },
+  ];
+  var barsEl = document.getElementById('ev-score-bars');
+  barsEl.innerHTML = '';
+  bars.forEach(function(b) {
+    var pct = Math.round(b.val / b.max * 100);
+    var color = pct >= 70 ? '#1a6b5a' : pct >= 45 ? '#e67e22' : '#c62828';
+    barsEl.innerHTML +=
+      '<div>' +
+      '<div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(247,244,239,0.55);margin-bottom:3px">' +
+      '<span>' + b.label + '</span><span>' + b.val + '/' + b.max + '</span></div>' +
+      '<div style="background:rgba(255,255,255,0.1);border-radius:3px;height:5px">' +
+      '<div style="width:' + pct + '%;height:5px;border-radius:3px;background:' + color + ';transition:width .4s"></div>' +
+      '</div></div>';
+  });
+
+  // 月費 + 初期費用 台幣換算
+  var monthly = rent + kanri;
+  var iniJPY = Math.round((shiki + rei + 1 + 0.5) * rent + 15000 + 15000); // 敷+礼+仲介+保証+保険+鍵
+  document.getElementById('ev-monthly-jpy').textContent = fmtJPY(monthly);
+  document.getElementById('ev-monthly-twd').textContent = fmtTWD(monthly * rate);
+  document.getElementById('ev-ini-jpy').textContent = fmtJPY(iniJPY);
+  document.getElementById('ev-ini-twd').textContent = fmtTWD(iniJPY * rate);
+
+  // 相場比較
+  if (areaMarket > 0) {
+    var totalRent2 = rent + kanri;
+    var diffAmt = totalRent2 - areaMarket;
+    var areaEl = document.getElementById('ev-area-result');
+    var areaClass = diffAmt <= -3000 ? 'alert-ok' : diffAmt <= 3000 ? 'alert-neu' : 'alert-danger';
+    var areaText = diffAmt <= -3000
+      ? '比周邊相場便宜 ¥' + Math.abs(diffAmt).toLocaleString() + '，非常划算'
+      : diffAmt <= 0
+      ? '與周邊相場相近（差 ¥' + Math.abs(diffAmt).toLocaleString() + '），合理範圍'
+      : diffAmt <= 3000
+      ? '比周邊相場貴 ¥' + diffAmt.toLocaleString() + '，稍高但可接受（確認設備）'
+      : '比周邊相場貴 ¥' + diffAmt.toLocaleString() + '，明顯偏高，建議再找其他物件';
+    areaEl.innerHTML = '<div class="alert ' + areaClass + '">' + areaText + '</div>';
+  }
+
+  // ── 優缺點生成 ──
+  var pros = [], cons = [];
+
+  // 費用
+  if (areaMarket > 0) {
+    var d = (rent + kanri) - areaMarket;
+    if (d <= -3000) pros.push('比周邊相場便宜 ¥' + Math.abs(d).toLocaleString() + '，CP值高');
+    else if (d <= 0) pros.push('費用與周邊相場相近，合理');
+    else if (d <= 3000) cons.push('租金稍高於相場 ¥' + d.toLocaleString() + '，確認設備是否值得');
+    else cons.push('租金明顯高於相場 ¥' + d.toLocaleString() + '，建議比較其他物件');
+  }
+  if (rei === 0) pros.push('無礼金，省下初期費用');
+  if (rei >= 2) cons.push('礼金 ' + rei + ' 個月，初期費用負擔重');
+  if (koshin === 0) pros.push('無更新料，長期居住省錢');
+  if (koshin > 0) cons.push('有更新料（每2年需付 ' + koshin + ' 個月家賃）');
+
+  // 空間
+  if (yoM2 >= 18) pros.push('臥室 ' + yoM2.toFixed(1) + 'm²，空間寬裕');
+  else if (yoM2 < 14) cons.push('臥室僅 ' + yoM2.toFixed(1) + 'm²，空間非常有限');
+  else cons.push('臥室 ' + yoM2.toFixed(1) + 'm²，普通，家具選擇受限');
+
+  // 瓦斯
+  if (gasVal === 2) pros.push('都市ガス，瓦斯費用合理');
+  else if (gasVal === 1) pros.push('全電化，無瓦斯費（夜間電費優惠）');
+  else cons.push('プロパンガス，瓦斯費約都市ガス 2 倍，每月多 2,000〜3,000円');
+
+  // 建築
+  if (struct === 3) pros.push('RC構造，隔音佳');
+  else cons.push('木造 / 軽量鉄骨，隔音較差，需注意鄰居噪音');
+  if (age <= 10) pros.push('屋齡 ' + age + ' 年，建築新，設備較齊全');
+  else if (age > 30) cons.push('屋齡 ' + age + ' 年，較老舊，隔熱・設備可能較差');
+  if (floor === 1) cons.push('1樓，濕氣較重且安全性低');
+  else if (floor >= 3) pros.push(floor + '樓，採光通風較好');
+  if (dir === 4) pros.push('南向，日照充足，冬天較暖');
+  else if (dir === 1) cons.push('北向，採光最差，冬天較陰冷');
+
+  // 設備
+  checkedEquip.forEach(function(eq) {
+    pros.push(eq + ' あり');
+  });
+  if (!document.getElementById('eq-aircon').checked)
+    cons.push('無冷暖エアコン，京都冬天需自購暖氣（額外費用）');
+  if (!document.getElementById('eq-sep').checked)
+    cons.push('浴廁一體（ユニットバス），使用體驗較差');
+  if (!document.getElementById('eq-inet').checked)
+    cons.push('無免費網路，需自行申請（初裝費 1〜2 萬円＋月費）');
+  if (!document.getElementById('eq-autolock').checked)
+    cons.push('無門禁（オートロックなし），安全性較低');
+
+  var prosEl = document.getElementById('ev-pros');
+  var consEl = document.getElementById('ev-cons');
+  prosEl.innerHTML = pros.length
+    ? pros.map(function(p) { return '<div style="padding:3px 0;border-bottom:0.5px solid var(--border2)">✓ ' + p + '</div>'; }).join('')
+    : '<div style="color:var(--ink3)">— 無明顯優點</div>';
+  consEl.innerHTML = cons.length
+    ? cons.map(function(c) { return '<div style="padding:3px 0;border-bottom:0.5px solid var(--border2)">✗ ' + c + '</div>'; }).join('')
+    : '<div style="color:var(--ink3)">— 無明顯缺點</div>';
+}
+
+// ── 初始化 ──
+calcTWD();
+evalProperty();
+
+// ── 讓生活費計算機的輸入同步更新台幣換算 ──
+(function() {
+  var ids = ['c-rent','c-kanri','c-denki','c-gas','c-water','c-net','c-phone','c-school','c-transit','c-food','c-misc','c-ent'];
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', calcTWD);
+  });
+})();
 </script>
 </body>
 </html>
